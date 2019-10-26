@@ -25,9 +25,38 @@ def profile(request):
     else:
         form = ProfileForm()
     return render(request, 'profile.html', {"form": form})
+def search_projects(request):
+
+    # search for a user by their username
+    if 'project' in request.GET and request.GET["project"]:
+        search_term = request.GET.get("project")
+        searched_projects = Project.search_projects(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html', {"message": message, "projects": searched_projects})
+
+    else:
+        message = "You haven't searched for any person"
+        return render(request, 'search.html', {"message": message})
+
 def projects(request):
     if request.GET.get('search_term'):
         projects = Project.search_project(request.GET.get('search_term'))
     else:
         projects = projects.all()
-    form = 
+     form = NewsLetterForm
+
+    if request.method == 'POST':
+        form = NewsLetterForm(request.POST or None)
+        if form.is_valid():
+            name = form.cleaned_data['your_name']
+            email = form.cleaned_data['email']
+
+            recipient = NewsLetterRecipients(name=name, email=email)
+            recipient.save()
+            send_welcome_email(name, email)
+
+            HttpResponseRedirect('home_projects')
+
+    return render(request, 'index.html', {'projects':projects, 'letterForm':form})
+ 
