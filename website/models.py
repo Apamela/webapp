@@ -49,6 +49,7 @@ class Image(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,blank=True,relate_name="image")
     image = models.ImageField(upload_to='picture/',)
     description  = models.TextField()
+    likes = models.IntegerField(default=0)
     comments = models.TextField(blank=True)
 
     def __str__(self):
@@ -66,7 +67,7 @@ class Image(models.Model):
         pictures = cls.objects.filter(name_icontains=search_term)
         return pictures
 
-   @classmethod
-   def update_image(cls,id):
+    @classmethod
+    def update_image(cls,id):
        pictures=cls.objects.filter(id=id).update(id=id)
        return pictures
