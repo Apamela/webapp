@@ -24,7 +24,7 @@ class Profile (models.Model):
         return profiles
     def __str__(self):
         return self.user
-#.........................................class for project..................................
+#.........................................class for project..................................................
 class Project(models.Model):
     title = models.TextField(max_length=100,null=True,blank=True,default="title")
     description = models.TextField()
@@ -43,3 +43,30 @@ class Project(models.Model):
     def search_projects(cls,search_term):
         projects = cls.objects.filter(title_icontains=search_term)
         return projects
+#...................................................class for Image............................................
+class Image(models.Model):
+    name= models.CharField(max_length=40)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,blank=True,relate_name="image")
+    image = models.ImageField(upload_to='picture/',)
+    description  = models.TextField()
+    comments = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.name
+    
+    def save_image(self):
+        self.save()
+    @classmethod
+    def delete_image_by_id(cls,id):
+        pictures = cls.objects.filter(pk=id)
+        pictures.delete()
+
+    @classmethod
+    def search_image(cls,search_term):
+        pictures = cls.objects.filter(name_icontains=search_term)
+        return pictures
+
+   @classmethod
+   def update_image(cls,id):
+       pictures=cls.objects.filter(id=id).update(id=id)
+       return pictures
