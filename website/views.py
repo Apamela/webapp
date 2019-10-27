@@ -39,12 +39,12 @@ def search_projects(request):
         message = "You haven't searched for any person"
         return render(request, 'search.html', {"message": message})
 
-def projects(request):
+def home_projects(request):
     if request.GET.get('search_term'):
         projects = Project.search_project(request.GET.get('search_term'))
     else:
         projects = projects.all()
-     form = NewsLetterForm
+        form = NewsLetterForm
 
     if request.method == 'POST':
         form = NewsLetterForm(request.POST or None)
@@ -59,4 +59,7 @@ def projects(request):
             HttpResponseRedirect('home_projects')
 
     return render(request, 'index.html', {'projects':projects, 'letterForm':form})
- 
+def project_list(request):
+     project_list= Project.objects.order_by('-title')
+     contex = {'project_list':project_list}
+     return render(request,'project_list.html',context)
