@@ -71,3 +71,5 @@ class Image(models.Model):
     def update_image(cls,id):
        pictures=cls.objects.filter(id=id).update(id=id)
        return pictures
+#........................................................class for review.............................................
+ 
