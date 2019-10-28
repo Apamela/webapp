@@ -71,5 +71,7 @@ class Image(models.Model):
     def update_image(cls,id):
        pictures=cls.objects.filter(id=id).update(id=id)
        return pictures
-#........................................................class for review.............................................
- 
+#........................................................class for Newsletter.............................................
+# class NewsLetterRecipients(models.Model):
+#     name = models.CharField(max_length = 30)
+#     email = models.EmailField()
