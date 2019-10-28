@@ -12,7 +12,7 @@ from .models import Profile,Project
 
 def welcome(request):
     return render(request, 'welcome.html')
-
+@login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
     profile = Profile.objects.filter(id = current_user.id).first()
@@ -27,8 +27,8 @@ def profile(request):
     else:
         form = ProfileForm()
     return render(request, 'profile.html', {"form": form})
-def search_projects(request):
 
+def search_projects(request):
     # search for a user by their username
     if 'project' in request.GET and request.GET["project"]:
         search_term = request.GET.get("project")
@@ -40,7 +40,7 @@ def search_projects(request):
     else:
         message = "You haven't searched for any person"
         return render(request, 'search.html', {"message": message})
-
+@login_required(login_url='/accounts/login/')
 def home_projects(request):
     if request.GET.get('search_term'):
         projects = Project.search_project(request.GET.get('search_term'))
@@ -63,6 +63,7 @@ def home_projects(request):
             HttpResponseRedirect('home_projects')
 
     return render(request, 'welcome.html', {'projects':projects, 'letterForm':form})
+
 def project(request, id):
 
     try:
@@ -105,6 +106,7 @@ def project_list(request):
      project_list= Project.objects.order_by('-title')
      contex = {'project_list':project_list}
      return render(request,'project_list.html',context)
+
 def new_project(request):
     current_user = request.user
     if request.method == 'POST':
@@ -120,14 +122,14 @@ def new_project(request):
     return render(request, 'registration/new_project.html', {"form": form})
 
 # Viewing a single picture
-
+@login_required(login_url='/accounts/login/')
 def user_list(request):
     user_list = User.objects.all()
     context = {'user_list': user_list}
     return render(request, 'user_list.html', context)
 
 
-
+@login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
 
