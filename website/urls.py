@@ -6,24 +6,14 @@ from django.conf.urls.static import static
 urlpatterns = [
 
     url(r'^$', views.home_projects, name='homePage'),
-    # url(r'^search/', views.search_users, name='search_users'),
     url(r'^search/', views.search_projects, name='search_projects'),
     url(r'^image(\d+)', views.project, name='project'),
-    
     url(r'^new/project$', views.new_project, name='new_project'),
-    url(r'^edit/profile$', views.edit_profile, name='edit_profile'),
-    
-       url(r'^ajax/newsletter/$', views.newsletter, name='newsletter'),
-   
-    url(r'^$', views.review_list, name='review_list'),
-    
-    url(r'^review/(?P<review_id>[0-9]+)/$',
-        views.review_detail, name='review_detail'),
-    
+    url(r'^profile$', views.profile, name='profile'),
+    url(r'^ajax/newsletter/$', views.newsletter, name='newsletter'),
     url(r'^project$', views.project_list, name='project_list'),
 ]
 
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

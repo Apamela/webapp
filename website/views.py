@@ -2,10 +2,12 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
+from .forms import NewsLetterForm
 import datetime as dt
 from django.shortcuts import render
 from django.http  import HttpResponse
-from .models import Profile
+from .models import Profile,Project
+
 # Create your views here.
 
 def welcome(request):
@@ -42,9 +44,11 @@ def search_projects(request):
 def home_projects(request):
     if request.GET.get('search_term'):
         projects = Project.search_project(request.GET.get('search_term'))
+
     else:
-        projects = projects.all()
-        form = NewsLetterForm
+        projects = Project.objects.all()
+
+    form = NewsLetterForm
 
     if request.method == 'POST':
         form = NewsLetterForm(request.POST or None)
@@ -58,7 +62,7 @@ def home_projects(request):
 
             HttpResponseRedirect('home_projects')
 
-    return render(request, 'index.html', {'projects':projects, 'letterForm':form})
+    return render(request, 'welcome.html', {'projects':projects, 'letterForm':form})
 def project(request, id):
 
     try:
@@ -124,7 +128,7 @@ def user_list(request):
 
 
 
-def edit_profile(request):
+def profile(request):
     current_user = request.user
 
     if request.method == 'POST':
@@ -138,7 +142,7 @@ def edit_profile(request):
 
     else:
         form = UpdatebioForm()
-    return render(request, 'registration/edit_profile.html', {"form": form})
+    return render(request, '/profile.html', {"form": form})
 def newsletter(request):
     name = request.POST.get('your_name')
     email= request.POST.get('email')
