@@ -6,7 +6,7 @@ from .forms import NewsLetterForm
 import datetime as dt
 from django.shortcuts import render
 from django.http  import HttpResponse
-from .models import Profile,Project
+from .models import Profile,Project,Review
 
 # Create your views here.
 
@@ -154,3 +154,8 @@ def newsletter(request):
     send_welcome_email(name, email)
     data= {'success': 'You have been successfully added to the newsletter mailing list'}
     return JsonResponse(data)
+
+
+def review_detail(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+    return render(request, 'review_detail.html', {'review': review})

@@ -72,7 +72,7 @@ class Image(models.Model):
        pictures=cls.objects.filter(id=id).update(id=id)
        return pictures
 #........................................................class for review.............................................
- class Review(models.Model):
+class Review(models.Model):
     RATING_CHOICES = (
         (1, '1'),
         (2, '2'),
