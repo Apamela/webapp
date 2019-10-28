@@ -46,7 +46,7 @@ class Project(models.Model):
 #...................................................class for Image............................................
 class Image(models.Model):
     name= models.CharField(max_length=40)
-    user = models.ForeignKey(User,on_delete=models.CASCADE,blank=True,relate_name="image")
+    
     image = models.ImageField(upload_to='picture/',)
     description  = models.TextField()
     likes = models.IntegerField(default=0)
