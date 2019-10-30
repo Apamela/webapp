@@ -1,4 +1,4 @@
-from .models import Image, Profile, Project
+from .models import Image, Profile, Project,Review
 from django import forms
 from django.forms import ModelForm, Textarea, IntegerField
 
