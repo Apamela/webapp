@@ -16,32 +16,32 @@
     <div class="col-sm-6 col-md-6"style="display: inline;">
       {% if user.is_authenticated %}
 
-      <li style="font-family: 'Dosis', sans-serif;">
-        <a href="{%url 'edit_profile'%}">Edit Profile</a>
-      </li>
+      
+        <a style="color:aquamarine;"href="{%url 'edit_profile'%}">Edit Profile</a>
+      
 
-      <li style="font-family: 'Dosis', sans-serif; ">
-        <a style="color:black;"href="{% url 'profile' user.id %}">My Profile</a>
-      </li>
-                   <li style="font-family: 'Dosis', sans-serif;">
-                    <a style="display:inline;" href="{%url 'new_project'%}">Submit Your Project</a>
-                  </li>
+     
+        <a style="color:aquamarine;"href="{% url 'profile' user.id %}">My Profile</a>
+      
+                   
+        <a style="color:aquamarine;" href="{%url 'new_project'%}">Submit Your Project</a>
+                 
      
         <a style="color:aquamarine;" href="/accounts/password/change">Change Password</a>
-      </li>
+     
 
-      <li style="font-family: 'Dosis', sans-serif;">
-        <a href="/logout">Logout</a>
-      </li>
+      
+        <a style="color:aquamarine;" href="/logout">Logout</a>
+     
 
       {% else %}
-      <li style="font-family: 'Dosis', sans-serif;">
-        <a class='btn btn-default' href="/accounts/login">Login</a>
+      
+        <a style="color:aquamarine;"class='btn btn-default' href="/accounts/login">Login</a>
       </li>
 
-      <li style="font-family: 'Dosis', sans-serif;">
-        <a class='btn btn-default' href="/accounts/register">Register</a>
-      </li>
+      
+        <a style="color:aquamarine;"class='btn btn-default' href="/accounts/register">Register</a>
+      
 
 {% endif %}
     </div>
