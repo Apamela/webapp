@@ -150,7 +150,7 @@ def profile(request,username=None):
 
     else:
         form = UpdatebioForm()
-    return render(request, '/profile.html', {"form": form})
+    return render(request, 'profile.html', {"form": form})
 def newsletter(request):
     name = request.POST.get('your_name')
     email= request.POST.get('email')
