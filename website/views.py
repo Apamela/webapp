@@ -13,7 +13,7 @@ from .models import Profile,Project,Review
 def welcome(request):
     return render(request, 'welcome.html')
 @login_required(login_url='/accounts/login/')
-def profile(request):
+def edit_profile(request):
     current_user = request.user
     profile = Profile.objects.filter(id = current_user.id).first()
     if request.method == 'POST':
@@ -26,7 +26,16 @@ def profile(request):
 
     else:
         form = ProfileForm()
-    return render(request, 'profile.html', {"form": form})
+    return render(request, 'edit_profile.html', {"form": form})
+@login_required(login_url='/accounts/login/')
+def profile(request, username=None):
+    if not username:
+        username = request.user.username
+    # images by user id
+    images = Image.objects.filter(user_id=username)
+
+    return render (request, '/profile.html', {'images':images, 'username': username})
+
 
 def search_projects(request):
     # search for a user by their username

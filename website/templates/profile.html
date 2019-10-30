@@ -1,42 +1,31 @@
-{%extends "registration/base.html"%} {% load bootstrap4 %} {%load static%} {% load staticfiles %} {% block content %}
+{%extends "base.html"%}
+{% load bootstrap4 %} {%load static%}
+{% load staticfiles %}
+{% block content %}
 
+<div class="jumbotron text-center" style="background-color:white;">
+    <h1 style="font-family: 'Dosis', sans-serif;"> Your Profile Page </h1>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if profile.profile_pic %}
+     <img src="{{user.profile.profile_pic.url | default_if_none:'#'}}" class="img-thumbnail" id="eachimage1" style="height:200px;width:150px;"></a>
+   {% endif %}
+    <p style="font-family: 'Dosis', sans-serif;">{{user.profile.bio}}</p>
+    <p style="font-family: 'Dosis', sans-serif;">{{user.profile.contact}}</p>
+    <button class="btn btn-lg btn-success" style="font-family: 'Dosis', sans-serif;"><a href=" {%url 'edit_profile'%}">Edit Profile</a></button>
+    </div>
 
-  <title>Edit Your Profile Information</title>
-  {{form.media}}
+<div class="container">
+  <div class="card-columns">
+    {% for project in projects %}
 
-{% block styles %} {% bootstrap_css %}
-  <link rel="stylesheet" href="{% static 'css/news.css' %}"> {% endblock %}
-
-</head>
-
-<body>
-<div class="container" style="background-color:#fff;">
-
-     <div class="row">
-
-
-  <form  action="{%url 'edit_profile'%}" method="post" enctype="multipart/form-data">
-    {%csrf_token%}
-
-    {% bootstrap_form form%}
-    <input id="id_myfield" type="submit" class="btn btn-success btn-lg" value="Post">
-  </form>
-
-   {% block scripts %}
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  {% bootstrap_javascript %} {% endblock %}
-
-
-     </div>
+    <div class="card border-secondary"><a href="{% url 'image' image.id %}">
+        <img src="{{project.project_image.url }}" class="img-fluid" id="eachimage"
+          size="100px200"></a>
+ <p style="font-family: 'Dosis', sans-serif;"> Caption : {{ project.description}}</p>
+      <p style="font-family: 'Dosis', sans-serif;">Posted by : {{ project.user}}</p>
+    </div>
+    {% endfor %}
+  </div>
 </div>
 
-
-
-
-</body>
 {% endblock %}
