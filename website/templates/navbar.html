@@ -17,14 +17,14 @@
       {% if user.is_authenticated %}
 
       <li style="font-family: 'Dosis', sans-serif;">
-        <a style="display:inline ;"href="{%url 'edit_profile'%}">Edit Profile</a>
+        <a href="{%url 'edit_profile'%}">Edit Profile</a>
       </li>
 
       <li style="font-family: 'Dosis', sans-serif;">
         <a href="{% url 'profile' user.id %}">My Profile</a>
       </li>
                    <li style="font-family: 'Dosis', sans-serif;">
-                    <a href="{%url 'new_project'%}">Submit Your Project</a>
+                    <a style="display:inline;" href="{%url 'new_project'%}">Submit Your Project</a>
                   </li>
       <li style="font-family: 'Dosis', sans-serif;">
         <a href="/accounts/password/change">Change Password</a>
