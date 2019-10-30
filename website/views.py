@@ -170,3 +170,7 @@ def newsletter(request):
 def review_detail(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
     return render(request, 'review_detail.html', {'review': review})
+def user(request):
+    user = User.objects.all()
+    context = {'user': user}
+    return render(request, 'user.html', context)
