@@ -12,6 +12,8 @@ urlpatterns = [
     url(r'^profile$', views.edit_profile, name='edit_profile'),
     url(r'^ajax/newsletter/$', views.newsletter, name='newsletter'),
     url(r'^project$', views.project_list, name='project_list'),
+    url(r'^profile/(?P<username>[0-9]+)$',views.profile, name='profile'),
+        
 ]
 
 
