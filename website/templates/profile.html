@@ -9,20 +9,18 @@
     {% if profile.profile_pic %}
      <img src="{{user.profile.profile_pic.url | default_if_none:'#'}}" class="img-thumbnail" id="eachimage1" style="height:200px;width:150px;"></a>
    {% endif %}
-   <img src="{{user.profile.profile_pic.url}}">
     <p style="font-family: 'Dosis', sans-serif;">{{user.profile.bio}}</p>
     <p style="font-family: 'Dosis', sans-serif;">{{user.profile.contact}}</p>
     <button class="btn btn-lg btn-success" style="font-family: 'Dosis', sans-serif;"><a href=" {%url 'edit_profile'%}">Edit Profile</a></button>
     </div>
 
 <div class="container">
-    
   <div class="card-columns">
     {% for project in projects %}
 
     <div class="card border-secondary"><a href="{% url 'image' image.id %}">
-        <img src="{{project.project_image.url }}" class="img-fluid" id="eachimage" size="100px200"></a>
-         
+        <img src="{{project.project_image.url }}" class="img-fluid" id="eachimage"
+          size="100px200"></a>
  <p style="font-family: 'Dosis', sans-serif;"> Caption : {{ project.description}}</p>
       <p style="font-family: 'Dosis', sans-serif;">Posted by : {{ project.user}}</p>
     </div>
@@ -31,3 +29,5 @@
 </div>
 
 {% endblock %}
+
+
