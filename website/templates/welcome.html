@@ -27,10 +27,10 @@
           id="eachimage1" size="100px200"></a>
       <p style="font-family: 'Dosis', sans-serif; text-align:center;"> {{ project.description}}</p>
      <p style="font-family: 'Dosis', sans-serif; text-align:center;"> {{ project.user.username}}</p>
-     <span class="badge badge-pill badge-info" style="font-family: 'Dosis', sans-serif;">
+     <span class="bg-secondary" style="font-family: 'Dosis', sans-serif;">
        <a href="{{ project.project_url}}">Visit Site</a></span>
-      <span class="bg-secondary" style="font-family: 'Dosis', sans-serif; text-align:center;">Like</span>
-  <span class="badge badge-pill badge-warning" style="font-family: 'Dosis', sans-serif; text-align:center;"><a href="{% url 'project' project.id %}">View Project</a></span>
+      <span class="bg-light" style="font-family: 'Dosis', sans-serif; text-align:center;">Like</span>
+  <span class="bg-secondary" style="font-family: 'Dosis', sans-serif; text-align:center;"><a href="{% url 'project' project.id %}">View Project</a></span>
 
     </div>
     {% endfor %}
