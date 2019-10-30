@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^search/', views.search_projects, name='search_projects'),
     url(r'^image(\d+)', views.project, name='project'),
     url(r'^new/project$', views.new_project, name='new_project'),
-    url(r'^profile$', views.profile, name='profile'),
+    url(r'^profile$', views.edit_profile, name='edit_profile'),
     url(r'^ajax/newsletter/$', views.newsletter, name='newsletter'),
     url(r'^project$', views.project_list, name='project_list'),
 ]
