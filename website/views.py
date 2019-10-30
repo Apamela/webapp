@@ -16,17 +16,18 @@ def welcome(request):
 @login_required(login_url='/accounts/login/')
 def edit_profile(request):
     current_user = request.user
-    profile = Profile.objects.filter(id = current_user.id).first()
+
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES)
+        form = UpdatebioForm(request.POST, request.FILES, instance=current_user.profile)
+        print(form.is_valid())
         if form.is_valid():
-            caption = form.save(commit=False)
-            caption.user = current_user
-            caption.save()
-            return redirect('profile')
+            image = form.save(commit=False)
+            image.user = current_user
+            image.save()
+        return redirect('homePage')
 
     else:
-        form = ProfileForm()
+        form = UpdatebioForm()
     return render(request, 'edit_profile.html', {"form": form})
 @login_required(login_url='/accounts/login/')
 def profile(request, username=None):
