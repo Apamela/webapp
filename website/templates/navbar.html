@@ -4,45 +4,31 @@
 <nav class="navbar bg-dark "style="position:fixed;width:100%;">
   <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{% url 'homePage' %}"><img src="https://static.thenounproject.com/png/703781-200.png" style="height:50px;width:45px;">
-      </a>
-
+        <a class="navbar-brand" href="{% url 'homePage' %}"><img src="https://static.thenounproject.com/png/703781-200.png" style="height:50px;width:45px;"></a>
       <a style="color:aquamarine;"class="navbar-brand" id="victor" href="{% url 'homePage' %}">Menu</a>
 
-      
     </div>
-    <div>
-        </div>
     <div class="col-sm-6 col-md-6"style="display: inline;">
       {% if user.is_authenticated %}
-
-      
         <a style="color:aquamarine;"href="{%url 'edit_profile'%}">Edit Profile</a>
         &nbsp;
-      
         <a style="color:aquamarine;"href="{% url 'profile' user.id %}">My Profile</a>
-        &nbsp;
-                   
-        <a style="color:aquamarine;" href="{%url 'new_project'%}">Submit Your Project</a>
-                 
+        &nbsp;          
+        <a style="color:aquamarine;" href="{%url 'new_project'%}">Submit Your Project</a>        
         &nbsp;
         <a style="color:aquamarine;" href="/accounts/password/change">Change Password</a>
         &nbsp;
         <a style="color:aquamarine;" href="/logout">Logout</a>
         &nbsp;
-
       {% else %}
-      
         <a style="color:aquamarine;"class='btn btn-default' href="/accounts/login">Login</a>
         &nbsp;
-
         <a style="color:aquamarine;"class='btn btn-default' href="/accounts/register">Register</a>
-      
-
-{% endif %}
+    
+      {% endif %}
     </div>
 
-    <!--..........................the adding search form here..........----------.---------------> 
+    <!--******************************the adding search form here*********************************************************--> 
     
     <div class="col-sm-4 col-md-4 navbar-right">
 
@@ -54,13 +40,9 @@
             <button class="btn btn-outline-secondary my-2 my-sm-0" style="color:aquamarine;" type="submit">Find</button>
           </div>
         </div>
-
-
       </form>
 
     </div>
-    <!-- search form end -->
-
-
+    
   </div>
 </nav>

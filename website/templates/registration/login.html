@@ -9,29 +9,19 @@
       {% if form.errors %}
       <p> Password or Username is incorrect </p>
       {% endif %}
-
-      <img class="thumbnail" src="{% static 'photos/gosh-her-voice-is-too-monotone.jpg' %}" style="height:500px;width:450px;">
-
-
-    </div>
-
-    <div class="col-md-6  mt-5">
-      {% if form.errors %}
-      <p> Some Information Might be Incorrect </p>
-      {% endif %}
       <br> <br> <br>
-      <div class="card border-primary mb-4" style="width:35%;position:fixed;">
+      <div class="card border-secondary mb-4" style="width:60%;height:auto;position:fixed;">
 
         <div class="card-header text-center">
-          <h1 class="h1" style="font-family: 'Dosis', sans-serif; color:skyblue;font-size:65px;">AWARDS</h1>
-          <h3 class="text-center" style="color:grey;font-size:15px;font-family: 'Dosis', sans-serif;">Login to see  the  different images.</h3>
+          <h1 class="h1" style="font-family: 'Dosis', sans-serif; color:slategray;font-size:65px;">AWARDS</h1>
+          <h3 class="text-center" style="color:grey;font-size:15px;font-family: 'Dosis', sans-serif;">Login to see  the  different project.</h3>
         </div>
-        <div class="card-body text-primary">
+        <div class="card-body text-secondary">
           <form action="/accounts/login/" method="post" style="font-family: 'Dosis', sans-serif; " >
             {% csrf_token %} {% bootstrap_form form%}
 
             <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Login">
+              <input type="submit" class="btn btn-secondary btn-sm" value="Login">
             </div>
 
             <input type="hidden" name="next" value="{{next}}">
@@ -43,29 +33,8 @@
     </div>
 
   </div>
-
-
-  <!-- ********************* -->
-
-  <div class="row p-0 m-0">
-    <div class="col-md-6">
-
-      <div class="card mt-5" style="width: 28rem;">
-        <div class="card-body text-center">
-          <h5 class="card-title" style="font-family: 'Dosis', sans-serif;">Don't have an account?</h5>
-          <h2 style="color:grey;font-size:10px;font-family: 'Dosis', sans-serif;">By signing up, you agree to our Terms, Data Policy and Cookies Policy.</h2>
-          <a href="/accounts/register" class="btn btn-primary" style="font-family: 'Dosis', sans-serif;">Sign Up</a>
-        </div>
-      </div>
-    </div>
-    
-    </div>
-  </div>
-
   
 </div>
 
-<br>
-<br>
 {% endblock %}
 

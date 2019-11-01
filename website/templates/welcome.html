@@ -2,18 +2,17 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block content %}
-<link href="https://fonts.googleapis.com/css?family=Charmonman|Dancing+Script|Kodchasan|Spirax|Abril+Fatface" rel="stylesheet">
 
-<div class="container">
 <br>
 <br>
-  <div class="jumbotron text-center mb-0" id="jumbo" style="background-color:white;">
+  <div class="jumbotron text-center mb-0" id="jumbo" >
 
-  <p class="h1" style="font-family: 'Dosis', cursive; color:skyblue;font-size:60px;">Awards</h1>
-    <img src ="/static/css/image/hero_awards.png" style ="width: 150%; height: auto;">
+  <p class="h1" style="font-family: 'Dosis', cursive; color:rgb(8, 8, 8);font-size:60px;">Awwwwards.</h1>
+    <br>  
+    <img src ="/static/css/image/dry.jpg" style ="opacity:1; height: auto;right:20px">
     <p class="h1" style="font-family: 'Dosis', cursive; color:black;font-size:25px;">View projects, submit your own projects and have them reviewed.</p>
   </div>
-</div>
+
 
 
 <div class="jumbotron itson mb-3 ">
@@ -23,19 +22,15 @@
     {% for project in projects %}
     <div class="card border-secondary w-33"><a href="{% url 'project' project.id %}">
 
-        <img src="{{project.project_image.url}}" data-target="#imageModal{{project.id}}" data-toggle="modal" alt="" class="img-fluid"
-          id="eachimage1" size="100px200"></a>
-      <p style="font-family: 'Dosis', sans-serif; text-align:center;"> {{ project.description}}</p>
+      <img src="{{project.project_image.url}}" data-target="#imageModal{{project.id}}" data-toggle="modal" alt="" class="img-fluid"id="eachimage1" size="100px200"></a>
+    <p style="font-family: 'Dosis', sans-serif; text-align:center;"> {{ project.description}}</p>
      <p style="font-family: 'Dosis', sans-serif; text-align:center;"> {{ project.user.username}}</p>
      <span class="bg-secondary" style="font-family: 'Dosis', sans-serif;"><a href="{{ project.project_url}}">Visit Site</a></span>
-      <span class="bg-light" style="font-family: 'Dosis', sans-serif; text-align:center;">Like</span>
      <span class="bg-info" style="font-family: 'Dosis', sans-serif; text-align:center;"><a href="{% url 'project' project.id %}">View Project</a></span>
 
     </div>
-    {% endfor %}
+    {% endfor %}     
   </div>
-
-
 </div>
 
 <div class="jumbotron text-center mt-3" style="background-color:white;font-family: 'Dosis', sans-serif;">
@@ -46,9 +41,6 @@
   </form>
 
 </div>
-
-
-
 
 {% endblock %} {% block scripts %} {{block.super}}
 <script type="text/javascript" src="{%static 'js/scripts.js'%}"></script>

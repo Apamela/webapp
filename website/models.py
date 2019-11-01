@@ -1,18 +1,23 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 from django.db import models
 import datetime as dt
 # Create your models here.
 #...................................class for Profile.......................................
 class Profile (models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    user = user=models.OneToOneField(User, on_delete=models.CASCADE, null=True, related_name="profile")
     bio = models.CharField(max_length=60)
     profile_pic = models.ImageField(upload_to='ProfilePicture/')
     date = models.DateTimeField(auto_now_add=True, null= True)
     class Meta:
         db_table = 'profile'
-    
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+
+    post_save.connect(create_user_profile, sender=User)
     def save_profile(self):
         self.save()
     
@@ -45,12 +50,12 @@ class Project(models.Model):
         return projects
 #...................................................class for Image............................................
 class Image(models.Model):
-    name= models.CharField(max_length=40)
-    
-    image = models.ImageField(upload_to='picture/',)
-    description  = models.TextField()
+    image=models.ImageField(upload_to='picture/', )
+    name = models.CharField(max_length=40)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, related_name="images")
+    description=models.TextField()
     likes = models.IntegerField(default=0)
-    comments = models.TextField(blank=True)
+    comments= models.TextField(blank=True)
 
     def __str__(self):
         return self.name
@@ -103,3 +108,7 @@ class Review(models.Model):
 
     def __str__(self):
         return self.comment
+#****************************************** class on NewsLetterRecipients ***************************************************************************
+class NewsLetterRecipients(models.Model):
+    name = models.CharField(max_length = 30)
+    email = models.EmailField()

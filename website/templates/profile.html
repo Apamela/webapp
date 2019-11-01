@@ -2,8 +2,8 @@
 {% load bootstrap4 %} {%load static%}
 {% load staticfiles %}
 {% block content %}
-<br> <br> <br> <br>
-<div class="jumbotron text-center" style="background-color:white;">
+
+<div class="jumbotron text-center" style="background-color:rgb(185, 164, 164);">
     <h1 style="font-family: 'Dosis', sans-serif;"> Your Profile Page </h1>
 
     {% if profile.profile_pic %}
@@ -11,7 +11,7 @@
    {% endif %}
     <p style="font-family: 'Dosis', sans-serif;">{{user.profile.bio}}</p>
     <p style="font-family: 'Dosis', sans-serif;">{{user.profile.contact}}</p>
-    <button class="btn btn-lg btn-success" style="font-family: 'Dosis', sans-serif;"><a href=" {%url 'edit_profile'%}">Edit Profile</a></button>
+    <button class="btn btn-lg btn-secondary" style="font-family: 'Dosis', sans-serif;"><a href=" {%url 'edit_profile'%}">Edit Profile</a></button>
     </div>
 
 <div class="container">
@@ -27,7 +27,6 @@
     {% endfor %}
   </div>
 </div>
-
 {% endblock %}
 
 

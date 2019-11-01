@@ -9,11 +9,15 @@ urlpatterns = [
     url(r'^search/', views.search_projects, name='search_projects'),
     url(r'^image(\d+)', views.project, name='project'),
     url(r'^new/project$', views.new_project, name='new_project'),
-    url(r'^profile$', views.edit_profile, name='edit_profile'),
+    url(r'^edit/profile$', views.edit_profile, name='edit_profile'),
     url(r'^ajax/newsletter/$', views.newsletter, name='newsletter'),
     url(r'^project$', views.project_list, name='project_list'),
     url(r'^profile/(?P<username>[0-9]+)$',views.profile, name='profile'),
+    url(r'^users/', views.user, name='user'),
+    url(r'^review/(?P<review_id>[0-9]+)/$',views.review_detail, name='review_detail')
         
+
+
 ]
 
 
